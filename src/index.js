@@ -16,11 +16,11 @@ function onInputEnter(e) {
 
   const searchCountries = e.target.value.trim();
 
-  // if (!searchCountries) {
-  //   countryList.innerHTML = '';
-  //   countryCard.innerHTML = '';
-  //   return;
-  // }
+  if (!searchCountries) {
+    countryList.innerHTML = '';
+    countryCard.innerHTML = '';
+    return;
+  }
 
   fetchCountries(searchCountries)
     .then(country => {
@@ -33,8 +33,8 @@ function onInputEnter(e) {
       renderedCountries(country);
     })
     .catch(error => {
-      // countriesList.innerHTML = '';
-      // countryCard.innerHTML = '';
+      countriesList.innerHTML = '';
+      countryCard.innerHTML = '';
       Notify.failure('Oops, there is no country with that name');
     });
 }
